@@ -11,7 +11,38 @@
 		0C6E49212AC382B500F3AE3E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E49202AC382B500F3AE3E /* ContentView.swift */; };
 		0C6E49232AC382B600F3AE3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C6E49222AC382B600F3AE3E /* Assets.xcassets */; };
 		0C6E49262AC382B600F3AE3E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C6E49252AC382B600F3AE3E /* Preview Assets.xcassets */; };
+		0C6E49362AC382D400F3AE3E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6E49352AC382D400F3AE3E /* SwiftUI.framework */; };
+		0C6E49392AC382D400F3AE3E /* midget_widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E49382AC382D400F3AE3E /* midget_widgetBundle.swift */; };
+		0C6E493B2AC382D400F3AE3E /* midget_widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E493A2AC382D400F3AE3E /* midget_widget.swift */; };
+		0C6E493D2AC382D500F3AE3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C6E493C2AC382D500F3AE3E /* Assets.xcassets */; };
+		0C6E49422AC382D500F3AE3E /* midget-widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0C6E49312AC382D400F3AE3E /* midget-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0C6E494B2AC3880600F3AE3E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6E494A2AC3880600F3AE3E /* MediaPlayer.framework */; };
+		0C6E494D2AC39B0500F3AE3E /* MediaRemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E494C2AC39B0500F3AE3E /* MediaRemoteController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0C6E49402AC382D500F3AE3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C6E49132AC382B500F3AE3E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C6E49302AC382D400F3AE3E;
+			remoteInfo = "midget-widgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0C6E49462AC382D500F3AE3E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0C6E49422AC382D500F3AE3E /* midget-widgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0C6E491B2AC382B500F3AE3E /* midget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = midget.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +51,17 @@
 		0C6E49222AC382B600F3AE3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C6E49252AC382B600F3AE3E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C6E49272AC382B600F3AE3E /* midget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = midget.entitlements; sourceTree = "<group>"; };
+		0C6E49312AC382D400F3AE3E /* midget-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "midget-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C6E49332AC382D400F3AE3E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		0C6E49352AC382D400F3AE3E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0C6E49382AC382D400F3AE3E /* midget_widgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = midget_widgetBundle.swift; sourceTree = "<group>"; };
+		0C6E493A2AC382D400F3AE3E /* midget_widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = midget_widget.swift; sourceTree = "<group>"; };
+		0C6E493C2AC382D500F3AE3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0C6E493E2AC382D500F3AE3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C6E493F2AC382D500F3AE3E /* midget_widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = midget_widget.entitlements; sourceTree = "<group>"; };
+		0C6E49482AC3877B00F3AE3E /* MusicKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MusicKit.framework; path = System/Library/Frameworks/MusicKit.framework; sourceTree = SDKROOT; };
+		0C6E494A2AC3880600F3AE3E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		0C6E494C2AC39B0500F3AE3E /* MediaRemoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRemoteController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +72,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0C6E492E2AC382D400F3AE3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C6E49362AC382D400F3AE3E /* SwiftUI.framework in Frameworks */,
+				0C6E494B2AC3880600F3AE3E /* MediaPlayer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -37,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				0C6E491D2AC382B500F3AE3E /* midget */,
+				0C6E49372AC382D400F3AE3E /* midget-widget */,
+				0C6E49322AC382D400F3AE3E /* Frameworks */,
 				0C6E491C2AC382B500F3AE3E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				0C6E491B2AC382B500F3AE3E /* midget.app */,
+				0C6E49312AC382D400F3AE3E /* midget-widgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +123,30 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		0C6E49322AC382D400F3AE3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C6E494A2AC3880600F3AE3E /* MediaPlayer.framework */,
+				0C6E49482AC3877B00F3AE3E /* MusicKit.framework */,
+				0C6E49332AC382D400F3AE3E /* WidgetKit.framework */,
+				0C6E49352AC382D400F3AE3E /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C6E49372AC382D400F3AE3E /* midget-widget */ = {
+			isa = PBXGroup;
+			children = (
+				0C6E49382AC382D400F3AE3E /* midget_widgetBundle.swift */,
+				0C6E493A2AC382D400F3AE3E /* midget_widget.swift */,
+				0C6E494C2AC39B0500F3AE3E /* MediaRemoteController.swift */,
+				0C6E493C2AC382D500F3AE3E /* Assets.xcassets */,
+				0C6E493E2AC382D500F3AE3E /* Info.plist */,
+				0C6E493F2AC382D500F3AE3E /* midget_widget.entitlements */,
+			);
+			path = "midget-widget";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,15 +157,34 @@
 				0C6E49172AC382B500F3AE3E /* Sources */,
 				0C6E49182AC382B500F3AE3E /* Frameworks */,
 				0C6E49192AC382B500F3AE3E /* Resources */,
+				0C6E49462AC382D500F3AE3E /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0C6E49412AC382D500F3AE3E /* PBXTargetDependency */,
 			);
 			name = midget;
 			productName = midget;
 			productReference = 0C6E491B2AC382B500F3AE3E /* midget.app */;
 			productType = "com.apple.product-type.application";
+		};
+		0C6E49302AC382D400F3AE3E /* midget-widgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C6E49432AC382D500F3AE3E /* Build configuration list for PBXNativeTarget "midget-widgetExtension" */;
+			buildPhases = (
+				0C6E492D2AC382D400F3AE3E /* Sources */,
+				0C6E492E2AC382D400F3AE3E /* Frameworks */,
+				0C6E492F2AC382D400F3AE3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "midget-widgetExtension";
+			productName = "midget-widgetExtension";
+			productReference = 0C6E49312AC382D400F3AE3E /* midget-widgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -100,6 +197,9 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					0C6E491A2AC382B500F3AE3E = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					0C6E49302AC382D400F3AE3E = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
@@ -118,6 +218,7 @@
 			projectRoot = "";
 			targets = (
 				0C6E491A2AC382B500F3AE3E /* midget */,
+				0C6E49302AC382D400F3AE3E /* midget-widgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -129,6 +230,14 @@
 			files = (
 				0C6E49262AC382B600F3AE3E /* Preview Assets.xcassets in Resources */,
 				0C6E49232AC382B600F3AE3E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C6E492F2AC382D400F3AE3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C6E493D2AC382D500F3AE3E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +253,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0C6E492D2AC382D400F3AE3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C6E49392AC382D400F3AE3E /* midget_widgetBundle.swift in Sources */,
+				0C6E493B2AC382D400F3AE3E /* midget_widget.swift in Sources */,
+				0C6E494D2AC39B0500F3AE3E /* MediaRemoteController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0C6E49412AC382D500F3AE3E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C6E49302AC382D400F3AE3E /* midget-widgetExtension */;
+			targetProxy = 0C6E49402AC382D500F3AE3E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0C6E49282AC382B600F3AE3E /* Debug */ = {
@@ -268,6 +395,7 @@
 		0C6E492B2AC382B600F3AE3E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = midget/midget.entitlements;
@@ -293,6 +421,7 @@
 		0C6E492C2AC382B600F3AE3E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = midget/midget.entitlements;
@@ -315,6 +444,58 @@
 			};
 			name = Release;
 		};
+		0C6E49442AC382D500F3AE3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "midget-widget/midget_widget.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "midget-widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "midget-widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "arthurfontaine.midget.midget-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0C6E49452AC382D500F3AE3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "midget-widget/midget_widget.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "midget-widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "midget-widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "arthurfontaine.midget.midget-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -332,6 +513,15 @@
 			buildConfigurations = (
 				0C6E492B2AC382B600F3AE3E /* Debug */,
 				0C6E492C2AC382B600F3AE3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C6E49432AC382D500F3AE3E /* Build configuration list for PBXNativeTarget "midget-widgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C6E49442AC382D500F3AE3E /* Debug */,
+				0C6E49452AC382D500F3AE3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
