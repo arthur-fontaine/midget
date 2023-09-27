@@ -8,32 +8,21 @@
 import WidgetKit
 import SwiftUI
 import Foundation
-
-func getCurrentMusicTitle(completion: @escaping (String?) -> Void) {
-    MediaRemoteController.shared.getCurrentMediaInfo { information in
-        if let title = information?.title as? String {
-            completion(title)
-        } else {
-            completion(nil)
-        }
-    }
-}
+import AppIntents
 
 struct Provider: TimelineProvider {
     private func startTimer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            getCurrentMusicTitle { title in
-                WidgetCenter.shared.reloadTimelines(ofKind: "midget_widget")
-            }
+            WidgetCenter.shared.reloadTimelines(ofKind: "midget_widget")
         }
     }
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), musicTitle: "No Music")
+        SimpleEntry(date: Date(), mediaInfo: nil)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), musicTitle: "No Music")
+        let entry = SimpleEntry(date: Date(), mediaInfo: nil)
         completion(entry)
     }
 
@@ -41,10 +30,10 @@ struct Provider: TimelineProvider {
         startTimer()
         
         // Fetch the current music title here
-        getCurrentMusicTitle { title in
+        MediaRemoteController.shared.getCurrentMediaInfo { mediaInfo in
             let currentDate = Date()
-            let entry = SimpleEntry(date: currentDate, musicTitle: title ?? "No Music")
-            
+            let entry = SimpleEntry(date: currentDate, mediaInfo: mediaInfo)
+
             // Create a timeline with the entry
             let timeline = Timeline(entries: [entry], policy: .atEnd)
             completion(timeline)
@@ -54,7 +43,7 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let musicTitle: String
+    let mediaInfo: MediaRemoteController.MediaInfo?
 }
 
 struct midget_widgetEntryView : View {
@@ -62,7 +51,10 @@ struct midget_widgetEntryView : View {
 
     var body: some View {
         VStack {
-            Text("Music: \(entry.musicTitle)")
+            Text("Music: \(entry.mediaInfo?.title ?? "No Music")")
+            Button(intent: PauseIntent()) {
+                Text("Pause")
+            }
         }
     }
 }

@@ -96,6 +96,7 @@ class MediaRemoteController {
     }
     
     func controlMedia(command: MRCommand) {
+        print("CONTROL", command)
         MRMediaRemoteSendCommand(command.rawValue, 0)
     }
     
