@@ -18,7 +18,7 @@
 		0C6E49422AC382D500F3AE3E /* midget-widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0C6E49312AC382D400F3AE3E /* midget-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0C6E494B2AC3880600F3AE3E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6E494A2AC3880600F3AE3E /* MediaPlayer.framework */; };
 		0C6E494D2AC39B0500F3AE3E /* MediaRemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E494C2AC39B0500F3AE3E /* MediaRemoteController.swift */; };
-		0C6E49682AC3AC5500F3AE3E /* PauseIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E49672AC3AC5500F3AE3E /* PauseIntent.swift */; };
+		0C6E49682AC3AC5500F3AE3E /* ControlMediaIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E49672AC3AC5500F3AE3E /* ControlMediaIntent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +73,7 @@
 		0C6E49482AC3877B00F3AE3E /* MusicKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MusicKit.framework; path = System/Library/Frameworks/MusicKit.framework; sourceTree = SDKROOT; };
 		0C6E494A2AC3880600F3AE3E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0C6E494C2AC39B0500F3AE3E /* MediaRemoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRemoteController.swift; sourceTree = "<group>"; };
-		0C6E49672AC3AC5500F3AE3E /* PauseIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseIntent.swift; sourceTree = "<group>"; };
+		0C6E49672AC3AC5500F3AE3E /* ControlMediaIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlMediaIntent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +171,7 @@
 		0C6E49662AC3AC3A00F3AE3E /* App Intent */ = {
 			isa = PBXGroup;
 			children = (
-				0C6E49672AC3AC5500F3AE3E /* PauseIntent.swift */,
+				0C6E49672AC3AC5500F3AE3E /* ControlMediaIntent.swift */,
 			);
 			path = "App Intent";
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C6E49392AC382D400F3AE3E /* midget_widgetBundle.swift in Sources */,
-				0C6E49682AC3AC5500F3AE3E /* PauseIntent.swift in Sources */,
+				0C6E49682AC3AC5500F3AE3E /* ControlMediaIntent.swift in Sources */,
 				0C6E493B2AC382D400F3AE3E /* midget_widget.swift in Sources */,
 				0C6E494D2AC39B0500F3AE3E /* MediaRemoteController.swift in Sources */,
 			);

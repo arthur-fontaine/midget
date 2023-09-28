@@ -13,6 +13,7 @@ import AppIntents
 struct Provider: TimelineProvider {
     private func startTimer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            // TODO: only reload if the infos have changed
             WidgetCenter.shared.reloadTimelines(ofKind: "midget_widget")
         }
     }
@@ -48,12 +49,27 @@ struct SimpleEntry: TimelineEntry {
 
 struct midget_widgetEntryView : View {
     var entry: Provider.Entry
+    var iconName: String
+    
+    let controlIntent = ControlMediaIntent()
+    
+    init(entry: Provider.Entry) {
+        self.entry = entry
+        
+        if entry.mediaInfo?.playbackRate == 0 || entry.mediaInfo?.playbackRate == nil {
+            self.iconName = "play.fill"
+            controlIntent.command = .play
+        } else {
+            self.iconName = "pause.fill"
+            controlIntent.command = .pause
+        }
+    }
 
     var body: some View {
         VStack {
             Text("Music: \(entry.mediaInfo?.title ?? "No Music")")
-            Button(intent: PauseIntent()) {
-                Text("Pause")
+            Button(intent: controlIntent) {
+                Image(systemName: iconName)
             }
         }
     }
