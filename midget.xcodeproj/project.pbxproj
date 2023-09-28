@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C292BF62AC5AECF00A6BC30 /* average_color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C292BF52AC5AECF00A6BC30 /* average_color.swift */; };
+		0C292BF82AC5B08C00A6BC30 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C292BF72AC5B08C00A6BC30 /* NSColor+Extension.swift */; };
+		0C292BFA2AC5B46700A6BC30 /* MediaRemoteController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C292BF92AC5B46700A6BC30 /* MediaRemoteController+Extension.swift */; };
 		0C6E491F2AC382B500F3AE3E /* midgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E491E2AC382B500F3AE3E /* midgetApp.swift */; };
 		0C6E49212AC382B500F3AE3E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E49202AC382B500F3AE3E /* ContentView.swift */; };
 		0C6E49232AC382B600F3AE3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C6E49222AC382B600F3AE3E /* Assets.xcassets */; };
@@ -56,6 +59,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C292BF52AC5AECF00A6BC30 /* average_color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = average_color.swift; sourceTree = "<group>"; };
+		0C292BF72AC5B08C00A6BC30 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
+		0C292BF92AC5B46700A6BC30 /* MediaRemoteController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaRemoteController+Extension.swift"; sourceTree = "<group>"; };
 		0C6E491B2AC382B500F3AE3E /* midget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = midget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C6E491E2AC382B500F3AE3E /* midgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = midgetApp.swift; sourceTree = "<group>"; };
 		0C6E49202AC382B500F3AE3E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -164,6 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				0C6E494C2AC39B0500F3AE3E /* MediaRemoteController.swift */,
+				0C292BF52AC5AECF00A6BC30 /* average_color.swift */,
+				0C292BF72AC5B08C00A6BC30 /* NSColor+Extension.swift */,
+				0C292BF92AC5B46700A6BC30 /* MediaRemoteController+Extension.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -287,8 +296,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C292BFA2AC5B46700A6BC30 /* MediaRemoteController+Extension.swift in Sources */,
 				0C6E49392AC382D400F3AE3E /* midget_widgetBundle.swift in Sources */,
 				0C6E49682AC3AC5500F3AE3E /* ControlMediaIntent.swift in Sources */,
+				0C292BF82AC5B08C00A6BC30 /* NSColor+Extension.swift in Sources */,
+				0C292BF62AC5AECF00A6BC30 /* average_color.swift in Sources */,
 				0C6E493B2AC382D400F3AE3E /* midget_widget.swift in Sources */,
 				0C6E494D2AC39B0500F3AE3E /* MediaRemoteController.swift in Sources */,
 			);

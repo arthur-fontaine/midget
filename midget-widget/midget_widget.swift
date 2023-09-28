@@ -5,9 +5,10 @@
 //  Created by Arthur Fontaine on 26/09/2023.
 //
 
-import WidgetKit
-import SwiftUI
 import Foundation
+import SwiftUI
+import AppKit
+import WidgetKit
 import AppIntents
 
 struct Provider: TimelineProvider {
@@ -49,7 +50,8 @@ struct SimpleEntry: TimelineEntry {
 
 struct midget_widgetEntryView : View {
     var entry: Provider.Entry
-    var iconName: String
+    
+    var mainControlIconName: String
     
     let controlIntent = ControlMediaIntent()
     
@@ -57,10 +59,10 @@ struct midget_widgetEntryView : View {
         self.entry = entry
         
         if entry.mediaInfo?.playbackRate == 0 || entry.mediaInfo?.playbackRate == nil {
-            self.iconName = "play.fill"
+            self.mainControlIconName = "play.fill"
             controlIntent.command = .play
         } else {
-            self.iconName = "pause.fill"
+            self.mainControlIconName = "pause.fill"
             controlIntent.command = .pause
         }
     }
@@ -69,7 +71,7 @@ struct midget_widgetEntryView : View {
         VStack {
             Text("Music: \(entry.mediaInfo?.title ?? "No Music")")
             Button(intent: controlIntent) {
-                Image(systemName: iconName)
+                Image(systemName: mainControlIconName)
             }
         }
     }
@@ -82,11 +84,11 @@ struct midget_widget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(macOS 14.0, *) {
                 midget_widgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
+                    .containerBackground(Color(entry.mediaInfo?.artworkColor ?? NSColor.tertiarySystemFill), for: .widget)
             } else {
                 midget_widgetEntryView(entry: entry)
                     .padding()
-                    .background()
+                    .background(Color(entry.mediaInfo?.artworkColor ?? NSColor.tertiarySystemFill))
             }
         }
         .configurationDisplayName("My Widget")
