@@ -52,6 +52,7 @@ struct midget_widgetEntryView : View {
     var entry: Provider.Entry
     
     var mainControlIconName: String
+    var foregroundColor: NSColor = NSColor.windowFrameTextColor
     
     let controlIntent = ControlMediaIntent()
     
@@ -65,6 +66,10 @@ struct midget_widgetEntryView : View {
             self.mainControlIconName = "pause.fill"
             controlIntent.command = .pause
         }
+        
+        if let artworkColor = entry.mediaInfo?.artworkColor {
+            foregroundColor = findForegroundColor(artworkColor: artworkColor) ?? foregroundColor
+        }
     }
 
     var body: some View {
@@ -74,6 +79,21 @@ struct midget_widgetEntryView : View {
                 Image(systemName: mainControlIconName)
             }
         }
+        .foregroundColor(Color(nsColor: foregroundColor))
+    }
+    
+    func findForegroundColor(artworkColor: NSColor, desiredContrast: CGFloat = 7.0) -> NSColor? {
+        let shades = artworkColor.shades
+        
+        for shade in shades {
+            let contrast = shade.contrastRatio(with: artworkColor)
+            if contrast >= desiredContrast {
+                return shade
+            }
+        }
+        
+        // If no suitable color is found, you can return a default color here or handle it as needed.
+        return nil
     }
 }
 
