@@ -78,22 +78,29 @@ struct midget_widgetEntryView : View {
             Button(intent: controlIntent) {
                 Image(systemName: mainControlIconName)
             }
+            .buttonStyle(PlainButtonStyle())
         }
         .foregroundColor(Color(nsColor: foregroundColor))
     }
     
-    func findForegroundColor(artworkColor: NSColor, desiredContrast: CGFloat = 7.0) -> NSColor? {
+    func findForegroundColor(artworkColor: NSColor) -> NSColor? {
         let shades = artworkColor.shades
-        
+
+        var maxContrast: CGFloat = 0.0
+        var bestShade: NSColor?
+
         for shade in shades {
             let contrast = shade.contrastRatio(with: artworkColor)
-            if contrast >= desiredContrast {
-                return shade
+
+            if shade.hexString != "#000000" && shade.hexString != "#FFFFFF" {
+                if contrast > maxContrast {
+                    maxContrast = contrast
+                    bestShade = shade
+                }
             }
         }
-        
-        // If no suitable color is found, you can return a default color here or handle it as needed.
-        return nil
+
+        return bestShade
     }
 }
 
