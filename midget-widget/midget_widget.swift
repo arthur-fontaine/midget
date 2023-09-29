@@ -51,7 +51,7 @@ struct SimpleEntry: TimelineEntry {
 struct midget_widgetEntryView : View {
     var entry: Provider.Entry
     
-    var mainControlIconName: String
+    var mainControlIconName: String = "play.fill"
     var foregroundColor: NSColor = NSColor.windowFrameTextColor
     
     var mainControlIntent: ControlMediaIntent
@@ -62,19 +62,23 @@ struct midget_widgetEntryView : View {
         self.entry = entry
         
         mainControlIntent = ControlMediaIntent()
-        if entry.mediaInfo?.playbackRate == 0 || entry.mediaInfo?.playbackRate == nil {
-            self.mainControlIconName = "play.fill"
-            mainControlIntent.command = .play
-        } else {
-            self.mainControlIconName = "pause.fill"
-            mainControlIntent.command = .pause
-        }
+        mainControlIntent.command = .play
         
         previousControlIntent = ControlMediaIntent()
         previousControlIntent.command = .previousTrack
         
         nextControlIntent = ControlMediaIntent()
         nextControlIntent.command = .nextTrack
+        
+        if let mediaInfo = entry.mediaInfo {
+            if mediaInfo.playbackRate == 0 || mediaInfo.playbackRate == nil {
+                self.mainControlIconName = "play.fill"
+                mainControlIntent.command = .play
+            } else {
+                self.mainControlIconName = "pause.fill"
+                mainControlIntent.command = .pause
+            }
+        }
         
         if let artworkColor = entry.mediaInfo?.artworkColor {
             foregroundColor = findForegroundColor(artworkColor: artworkColor) ?? foregroundColor
@@ -120,6 +124,7 @@ struct midget_widgetEntryView : View {
                         }
                     }
                     .buttonStyle(PlainButtonStyle())
+                    .disabled(entry.mediaInfo == nil)
                 }
                     .frame(maxWidth: .infinity, alignment: .center)
             }
