@@ -54,18 +54,27 @@ struct midget_widgetEntryView : View {
     var mainControlIconName: String
     var foregroundColor: NSColor = NSColor.windowFrameTextColor
     
-    let controlIntent = ControlMediaIntent()
+    var mainControlIntent: ControlMediaIntent
+    var previousControlIntent: ControlMediaIntent
+    var nextControlIntent: ControlMediaIntent
     
     init(entry: Provider.Entry) {
         self.entry = entry
         
+        mainControlIntent = ControlMediaIntent()
         if entry.mediaInfo?.playbackRate == 0 || entry.mediaInfo?.playbackRate == nil {
             self.mainControlIconName = "play.fill"
-            controlIntent.command = .play
+            mainControlIntent.command = .play
         } else {
             self.mainControlIconName = "pause.fill"
-            controlIntent.command = .pause
+            mainControlIntent.command = .pause
         }
+        
+        previousControlIntent = ControlMediaIntent()
+        previousControlIntent.command = .previousTrack
+        
+        nextControlIntent = ControlMediaIntent()
+        nextControlIntent.command = .nextTrack
         
         if let artworkColor = entry.mediaInfo?.artworkColor {
             foregroundColor = findForegroundColor(artworkColor: artworkColor) ?? foregroundColor
@@ -80,9 +89,21 @@ struct midget_widgetEntryView : View {
                 .font(.system(size: 14, weight: .regular))
                 .opacity(0.5)
                 .padding(.bottom, 12)
-            Button(intent: controlIntent) {
-                Image(systemName: mainControlIconName)
-                    .font(.system(size: 32))
+            HStack(spacing: 32) {
+                Button(intent: previousControlIntent) {
+                    Image(systemName: "backward.fill")
+                        .font(.system(size: 20))
+                }
+                
+                Button(intent: mainControlIntent) {
+                    Image(systemName: mainControlIconName)
+                        .font(.system(size: 32))
+                }
+                
+                Button(intent: nextControlIntent) {
+                    Image(systemName: "forward.fill")
+                        .font(.system(size: 20))
+                }
             }
             .buttonStyle(PlainButtonStyle())
         }
