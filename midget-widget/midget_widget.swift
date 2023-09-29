@@ -74,9 +74,15 @@ struct midget_widgetEntryView : View {
 
     var body: some View {
         VStack {
-            Text("Music: \(entry.mediaInfo?.title ?? "No Music")")
+            Text(entry.mediaInfo?.title ?? "No Music")
+                .font(.system(size: 14, weight: .medium))
+            Text(entry.mediaInfo?.artist ?? "")
+                .font(.system(size: 14, weight: .regular))
+                .opacity(0.5)
+                .padding(.bottom, 12)
             Button(intent: controlIntent) {
                 Image(systemName: mainControlIconName)
+                    .font(.system(size: 32))
             }
             .buttonStyle(PlainButtonStyle())
         }
