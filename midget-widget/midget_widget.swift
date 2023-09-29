@@ -82,32 +82,48 @@ struct midget_widgetEntryView : View {
     }
 
     var body: some View {
-        VStack {
-            Text(entry.mediaInfo?.title ?? "No Music")
-                .font(.system(size: 14, weight: .medium))
-            Text(entry.mediaInfo?.artist ?? "")
-                .font(.system(size: 14, weight: .regular))
-                .opacity(0.5)
-                .padding(.bottom, 12)
-            HStack(spacing: 32) {
-                Button(intent: previousControlIntent) {
-                    Image(systemName: "backward.fill")
-                        .font(.system(size: 20))
+        HStack(spacing: 0) {
+                if let artworkData = entry.mediaInfo?.artworkData,
+                   let image = NSImage(data: artworkData) {
+                    Image(nsImage: image)
+                        .resizable()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .cornerRadius(12)
+                        .aspectRatio(contentMode: .fit)
+                        .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0))
                 }
                 
-                Button(intent: mainControlIntent) {
-                    Image(systemName: mainControlIconName)
-                        .font(.system(size: 32))
+                VStack(spacing: 12) {
+                    VStack {
+                        Text(entry.mediaInfo?.title ?? "No Music")
+                            .font(.system(size: 14, weight: .medium))
+                        
+                        Text(entry.mediaInfo?.artist ?? "")
+                            .font(.system(size: 14, weight: .regular))
+                            .opacity(0.5)
+                    }
+                    
+                    HStack(spacing: 32) {
+                        Button(intent: previousControlIntent) {
+                            Image(systemName: "backward.fill")
+                                .font(.system(size: 20))
+                        }
+                        
+                        Button(intent: mainControlIntent) {
+                            Image(systemName: mainControlIconName)
+                                .font(.system(size: 32))
+                        }
+                        
+                        Button(intent: nextControlIntent) {
+                            Image(systemName: "forward.fill")
+                                .font(.system(size: 20))
+                        }
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
-                
-                Button(intent: nextControlIntent) {
-                    Image(systemName: "forward.fill")
-                        .font(.system(size: 20))
-                }
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
-            .buttonStyle(PlainButtonStyle())
-        }
-        .foregroundColor(Color(nsColor: foregroundColor))
+            .foregroundColor(Color(nsColor: foregroundColor))
     }
     
     func findForegroundColor(artworkColor: NSColor) -> NSColor? {
@@ -141,11 +157,11 @@ struct midget_widget: Widget {
                     .containerBackground(Color(entry.mediaInfo?.artworkColor ?? NSColor.tertiarySystemFill), for: .widget)
             } else {
                 midget_widgetEntryView(entry: entry)
-                    .padding()
                     .background(Color(entry.mediaInfo?.artworkColor ?? NSColor.tertiarySystemFill))
             }
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .contentMarginsDisabled()
     }
 }
