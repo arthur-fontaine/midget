@@ -10,6 +10,7 @@ import SwiftUI
 import AppKit
 import WidgetKit
 import AppIntents
+import SkeletonUI
 
 struct Provider: TimelineProvider {
     private func startTimer() {
@@ -101,10 +102,16 @@ struct midget_widgetEntryView : View {
                     VStack {
                         Text(entry.mediaInfo?.title ?? "No Music")
                             .font(.system(size: 14, weight: .medium))
+                            .skeleton(with: entry.mediaInfo?.title == nil,
+                                      size: CGSize(width: 152, height: 14),
+                                      lines: 1)
                         
                         Text(entry.mediaInfo?.artist ?? "")
                             .font(.system(size: 14, weight: .regular))
                             .opacity(0.5)
+                            .skeleton(with: entry.mediaInfo?.title == nil,
+                                      size: CGSize(width: 96, height: 14),
+                                      lines: 1)
                     }
                     
                     HStack(spacing: 32) {
@@ -123,8 +130,8 @@ struct midget_widgetEntryView : View {
                                 .font(.system(size: 20))
                         }
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    .disabled(entry.mediaInfo == nil)
+                        .buttonStyle(PlainButtonStyle())
+                        .disabled(entry.mediaInfo?.title == nil)
                 }
                     .frame(maxWidth: .infinity, alignment: .center)
             }
@@ -165,8 +172,9 @@ struct midget_widget: Widget {
                     .background(Color(entry.mediaInfo?.artworkColor ?? NSColor.tertiarySystemFill))
             }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Midget")
+        .description("A widget to control the media.")
         .contentMarginsDisabled()
+        .supportedFamilies([.systemMedium])
     }
 }
