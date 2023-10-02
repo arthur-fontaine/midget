@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Version \(appVersion ?? "")")
         }
         .padding()
     }
