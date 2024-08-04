@@ -38,7 +38,9 @@ class MediaRemoteController {
                 .likeTrack: "Like Track",
                 .banTrack: "Ban Track",
                 .addTrackToWishList: "Add Track to Wish List",
-                .removeTrackFromWishList: "Remove Track from Wish List"
+                .removeTrackFromWishList: "Remove Track from Wish List",
+
+                ._custom_openApp: "Open App"
             ]
         
         case play = "0"
@@ -59,6 +61,8 @@ class MediaRemoteController {
         case banTrack = "0x6B"
         case addTrackToWishList = "0x6C"
         case removeTrackFromWishList = "0x6D"
+
+        case _custom_openApp = "0x6E"
     }
 
     struct MediaInfo {
@@ -150,12 +154,33 @@ class MediaRemoteController {
         }
     }
 
+    struct MediaClient {
+        let bundleIdentifier: String?
+        let displayName: String?
+        let processIdentifier: Int?
+        let processUserIdentifier: Int?
+
+        init(_ info: AnyObject?) {
+            bundleIdentifier = info?.value(forKey: "bundleIdentifier") as? String
+            displayName = info?.value(forKey: "displayName") as? String
+            processIdentifier = info?.value(forKey: "processIdentifier") as? Int
+            processUserIdentifier = info?.value(forKey: "processUserIdentifier") as? Int
+        }
+    }
+
     // MARK: - Public Methods
     
     func getCurrentMediaInfo(completion: @escaping (MediaInfo?) -> Void) {
         MRMediaRemoteGetNowPlayingInfo { information in
             let mediaInfo = MediaInfo(information)
             completion(mediaInfo)
+        }
+    }
+
+    func getCurrentMediaClient(completion: @escaping (MediaClient?) -> Void) {
+        MRMediaRemoteGetNowPlayingClient { information in
+            let mediaClient = MediaClient(information)
+            completion(mediaClient)
         }
     }
     
@@ -182,6 +207,25 @@ class MediaRemoteController {
         let MRMediaRemoteGetNowPlayingInfo = unsafeBitCast(MRMediaRemoteGetNowPlayingInfoPointer, to: MRMediaRemoteGetNowPlayingInfoFunction.self)
         
         MRMediaRemoteGetNowPlayingInfo(DispatchQueue.main) { information in
+            completion(information)
+        }
+    }
+
+    private func MRMediaRemoteGetNowPlayingClient(_ completion: @escaping (AnyObject?) -> Void) {
+        guard let bundle = CFBundleCreate(kCFAllocatorDefault, NSURL(fileURLWithPath: "/System/Library/PrivateFrameworks/MediaRemote.framework")) else {
+            completion(nil)
+            return
+        }
+        
+        guard let MRMediaRemoteGetNowPlayingClientPointer = CFBundleGetFunctionPointerForName(bundle, "MRMediaRemoteGetNowPlayingClient" as CFString) else {
+            completion(nil)
+            return
+        }
+
+        typealias MRMediaRemoteGetNowPlayingClientFunction = @convention(c) (DispatchQueue, @escaping (AnyObject) -> Void) -> Void
+        let MRMediaRemoteGetNowPlayingClient = unsafeBitCast(MRMediaRemoteGetNowPlayingClientPointer, to: MRMediaRemoteGetNowPlayingClientFunction.self)
+        
+        MRMediaRemoteGetNowPlayingClient(DispatchQueue.main) { information in
             completion(information)
         }
     }

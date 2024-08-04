@@ -77,6 +77,7 @@ struct midget_widgetEntryView : View {
     var mainControlIntent: ControlMediaIntent
     var previousControlIntent: ControlMediaIntent
     var nextControlIntent: ControlMediaIntent
+    var openAppIntent: ControlMediaIntent
     
     init(entry: Provider.Entry) {
         self.entry = entry
@@ -89,6 +90,9 @@ struct midget_widgetEntryView : View {
         
         nextControlIntent = ControlMediaIntent()
         nextControlIntent.command = .nextTrack
+
+        openAppIntent = ControlMediaIntent()
+        openAppIntent.command = ._custom_openApp
         
         if let mediaInfo = entry.mediaInfo {
             if mediaInfo.playbackRate == 0 || mediaInfo.playbackRate == nil {
@@ -106,7 +110,8 @@ struct midget_widgetEntryView : View {
     }
 
     var body: some View {
-        HStack(spacing: 0) {
+        Button(intent: openAppIntent) {
+            HStack(spacing: 0) {
                 if let artworkData = entry.mediaInfo?.artworkData,
                    let image = NSImage(data: artworkData) {
                     Image(nsImage: image)
@@ -153,12 +158,14 @@ struct midget_widgetEntryView : View {
                                 .font(.system(size: 20))
                         }
                     }
-                        .buttonStyle(PlainButtonStyle())
-                        .disabled(entry.mediaInfo?.title == nil)
+                    .buttonStyle(PlainButtonStyle())
+                    .disabled(entry.mediaInfo?.title == nil)
                 }
-                    .frame(maxWidth: .infinity, alignment: .center)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
             .foregroundColor(Color(nsColor: foregroundColor))
+        }
+        .buttonStyle(PlainButtonStyle())
     }
     
     private var findForegroundColorCache = [NSColor: NSColor]()

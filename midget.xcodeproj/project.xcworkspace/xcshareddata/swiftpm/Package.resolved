@@ -1,4 +1,5 @@
 {
+  "originHash" : "720a96f1b624fba16d661f1a429e5e7479d54f039581bba1a2429ac81e55a3fe",
   "pins" : [
     {
       "identity" : "skeletonui",
@@ -28,5 +29,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
