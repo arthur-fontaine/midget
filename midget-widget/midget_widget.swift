@@ -100,18 +100,22 @@ struct midget_widgetEntryView : View {
                 
                 VStack(spacing: 12) {
                     VStack {
-                        Text(entry.mediaInfo?.title ?? "No Music")
-                            .font(.system(size: 14, weight: .medium))
-                            .skeleton(with: entry.mediaInfo?.title == nil,
-                                      size: CGSize(width: 152, height: 14),
-                                      lines: 1)
+                        if (entry.mediaInfo?.title != nil && entry.mediaInfo?.title != "") {
+                            Text(entry.mediaInfo?.title)
+                                .font(.system(size: 14, weight: .medium))
+                                .skeleton(with: entry.mediaInfo?.title == nil,
+                                          size: CGSize(width: 152, height: 14),
+                                          lines: 1)
+                        }
                         
-                        Text(entry.mediaInfo?.artist ?? "")
-                            .font(.system(size: 14, weight: .regular))
-                            .opacity(0.5)
-                            .skeleton(with: entry.mediaInfo?.title == nil,
-                                      size: CGSize(width: 96, height: 14),
-                                      lines: 1)
+                        if (entry.mediaInfo?.artist != nil && entry.mediaInfo?.artist != "") {
+                            Text(entry.mediaInfo?.artist ?? "")
+                                .font(.system(size: 14, weight: .regular))
+                                .opacity(0.5)
+                                .skeleton(with: entry.mediaInfo?.title == nil,
+                                          size: CGSize(width: 96, height: 14),
+                                          lines: 1)
+                        }
                     }
                     
                     HStack(spacing: 32) {
