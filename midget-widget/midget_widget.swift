@@ -12,11 +12,29 @@ import WidgetKit
 import AppIntents
 import SkeletonUI
 
-struct Provider: TimelineProvider {   
+class EntryCache {
+    var previousEntry: SimpleEntry?
+}
+
+struct Provider: TimelineProvider {
+    private let entryCache = EntryCache()
+
     private func startTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            // TODO: only reload if the infos have changed
-            WidgetCenter.shared.reloadTimelines(ofKind: "midget_widget")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            MediaRemoteController.shared.getCurrentMediaInfo { mediaInfo in
+                if let mediaInfo = mediaInfo,
+                   let previousMediaInfo = self.entryCache.previousEntry?.mediaInfo {
+                    if (
+                        mediaInfo.title != previousMediaInfo.title
+                        || mediaInfo.artist != previousMediaInfo.artist
+                        || mediaInfo.playbackRate != previousMediaInfo.playbackRate
+                    ) {
+                        WidgetCenter.shared.reloadTimelines(ofKind: "midget_widget")
+                    }
+                } else {
+                    WidgetCenter.shared.reloadTimelines(ofKind: "midget_widget")
+                }
+            }
         }
     }
 
@@ -39,6 +57,7 @@ struct Provider: TimelineProvider {
 
             // Create a timeline with the entry
             let timeline = Timeline(entries: [entry], policy: .atEnd)
+            self.entryCache.previousEntry = entry
             completion(timeline)
         }
     }
