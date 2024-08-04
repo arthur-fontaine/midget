@@ -12,14 +12,14 @@ import WidgetKit
 import AppIntents
 import SkeletonUI
 
-struct Provider: TimelineProvider {
+struct Provider: TimelineProvider {   
     private func startTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             // TODO: only reload if the infos have changed
             WidgetCenter.shared.reloadTimelines(ofKind: "midget_widget")
         }
     }
-    
+
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), mediaInfo: nil)
     }
@@ -138,7 +138,13 @@ struct midget_widgetEntryView : View {
             .foregroundColor(Color(nsColor: foregroundColor))
     }
     
-    func findForegroundColor(artworkColor: NSColor) -> NSColor? {
+    private var findForegroundColorCache = [NSColor: NSColor]()
+    
+    mutating func findForegroundColor(artworkColor: NSColor) -> NSColor? {
+        if let value = findForegroundColorCache[artworkColor] {
+            return value
+        }
+        
         let shades = artworkColor.shades
 
         var maxContrast: CGFloat = 0.0
@@ -154,6 +160,8 @@ struct midget_widgetEntryView : View {
                 }
             }
         }
+
+        findForegroundColorCache[artworkColor] = bestShade
 
         return bestShade
     }

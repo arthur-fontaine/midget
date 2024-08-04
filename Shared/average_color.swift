@@ -8,8 +8,14 @@
 import Foundation
 import SwiftUI
 
+private var averageColorCache = [Data: NSColor]()
+
 // Inspired by https://gist.github.com/bbaars/0851c25df14941becc7a0307e41cf716#file-average-color-002-swift
 func averageColor(data: Data) -> NSColor? {
+    if let value = averageColorCache[data] {
+        return value
+    }
+    
     // convert our image to a Core Image Image
     guard let inputImage = CIImage(data: data) else { return nil }
 
@@ -37,8 +43,12 @@ func averageColor(data: Data) -> NSColor? {
                    colorSpace: nil)
 
     // Convert our bitmap images of r, g, b, a to a UIColor
-    return NSColor(red: CGFloat(bitmap[0]) / 255,
+    var color = NSColor(red: CGFloat(bitmap[0]) / 255,
                    green: CGFloat(bitmap[1]) / 255,
                    blue: CGFloat(bitmap[2]) / 255,
                    alpha: CGFloat(bitmap[3]) / 255)
+    
+    averageColorCache[data] = color
+    
+    return color
 }

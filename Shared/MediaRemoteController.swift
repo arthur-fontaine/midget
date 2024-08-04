@@ -11,6 +11,7 @@ import AppIntents
 class MediaRemoteController {
     
     static let shared = MediaRemoteController()
+    static private var artworkDataCache = [String: Data]()
     
     private init() {
         // Private constructor to enforce singleton pattern
@@ -59,7 +60,7 @@ class MediaRemoteController {
         case addTrackToWishList = "0x6C"
         case removeTrackFromWishList = "0x6D"
     }
-    
+
     struct MediaInfo {
         let totalDiscCount: Int?
         let shuffleMode: Int?
@@ -105,7 +106,6 @@ class MediaRemoteController {
             repeatMode = info["kMRMediaRemoteNowPlayingInfoRepeatMode"] as? Int
             title = info["kMRMediaRemoteNowPlayingInfoTitle"] as? String
             playbackRate = info["kMRMediaRemoteNowPlayingInfoPlaybackRate"] as? Double
-            artworkData = info["kMRMediaRemoteNowPlayingInfoArtworkData"] as? Data
             album = info["kMRMediaRemoteNowPlayingInfoAlbum"] as? String
             totalQueueCount = info["kMRMediaRemoteNowPlayingInfoTotalQueueCount"] as? Int
             artworkMIMEType = info["kMRMediaRemoteNowPlayingInfoArtworkMIMEType"] as? String
@@ -133,10 +133,23 @@ class MediaRemoteController {
             startTime = info["kMRMediaRemoteNowPlayingInfoStartTime"] as? TimeInterval
             totalChapterCount = info["kMRMediaRemoteNowPlayingInfoTotalChapterCount"] as? Int
             radioStationHash = info["kMRMediaRemoteNowPlayingInfoRadioStationHash"] as? Int
+
+            if let album = album, let artist = artist {
+                let key = "\(album)-\(artist)"
+                if let cachedArtworkData = MediaRemoteController.artworkDataCache[key] {
+                    artworkData = cachedArtworkData
+                } else {
+                    artworkData = info["kMRMediaRemoteNowPlayingInfoArtworkData"] as? Data
+                    if let artworkData = artworkData {
+                        MediaRemoteController.artworkDataCache[key] = artworkData
+                    }
+                }
+            } else {
+                artworkData = nil
+            }
         }
     }
 
-    
     // MARK: - Public Methods
     
     func getCurrentMediaInfo(completion: @escaping (MediaInfo?) -> Void) {
