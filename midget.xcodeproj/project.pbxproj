@@ -23,6 +23,10 @@
 		0C6E494B2AC3880600F3AE3E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6E494A2AC3880600F3AE3E /* MediaPlayer.framework */; };
 		0C6E494D2AC39B0500F3AE3E /* MediaRemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E494C2AC39B0500F3AE3E /* MediaRemoteController.swift */; };
 		0C6E49682AC3AC5500F3AE3E /* ControlMediaIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E49672AC3AC5500F3AE3E /* ControlMediaIntent.swift */; };
+		0C7CDFA62C5F0EB600ADEA64 /* MediaRemoteController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C292BF92AC5B46700A6BC30 /* MediaRemoteController+Extension.swift */; };
+		0C7CDFA72C5F0EB600ADEA64 /* MediaRemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E494C2AC39B0500F3AE3E /* MediaRemoteController.swift */; };
+		0C7CDFA82C5F0EB600ADEA64 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C292BF72AC5B08C00A6BC30 /* NSColor+Extension.swift */; };
+		0C7CDFA92C5F0EB600ADEA64 /* average_color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C292BF52AC5AECF00A6BC30 /* average_color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,6 +299,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C7CDFA62C5F0EB600ADEA64 /* MediaRemoteController+Extension.swift in Sources */,
+				0C7CDFA72C5F0EB600ADEA64 /* MediaRemoteController.swift in Sources */,
+				0C7CDFA82C5F0EB600ADEA64 /* NSColor+Extension.swift in Sources */,
+				0C7CDFA92C5F0EB600ADEA64 /* average_color.swift in Sources */,
 				0C6E49212AC382B500F3AE3E /* ContentView.swift in Sources */,
 				0C6E491F2AC382B500F3AE3E /* midgetApp.swift in Sources */,
 			);

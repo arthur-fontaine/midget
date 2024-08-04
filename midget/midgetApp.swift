@@ -13,5 +13,7 @@ struct midgetApp: App {
         WindowGroup {
             ContentView()
         }
+        .windowStyle(HiddenTitleBarWindowStyle()) // Optional: Customize window style
+        .windowResizability(.contentSize) // Optional: Disable window resizing
     }
 }
